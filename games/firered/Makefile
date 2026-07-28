@@ -24,13 +24,13 @@ ASFLAGS  := -mcpu=arm7tdmi -mthumb-interwork
 CFLAGS   := -O2 -mthumb-interwork
 
 # Source files (order matters for linking)
-ASM_SRCS := asm/rom_header.s asm/crt0.s $(sort $(wildcard asm/bank_*.s))
+ASM_SRCS := asm/rom_header.s asm/crt0.s asm/syms.s $(sort $(wildcard asm/bank_*.s))
 C_SRCS   := src/main.c
 
 # Object files
 ASM_OBJS := $(ASM_SRCS:.s=.o)
 C_OBJS   := $(C_SRCS:.c=.o)
-ALL_OBJS := asm/rom_header.o asm/crt0.o $(C_OBJS) $(sort $(wildcard asm/bank_*.o))
+ALL_OBJS := asm/rom_header.o asm/crt0.o asm/syms.o $(C_OBJS) $(sort $(wildcard asm/bank_*.o))
 
 # Build directory
 BUILD    := build
@@ -49,8 +49,8 @@ all: $(ROM_NAME).gba
 	$(CC) $(CFLAGS) -S -o $@ $<
 
 # ─── Link ────────────────────────────────────────────────────────────────
-$(ROM_NAME).elf: $(ALL_OBJS) gba.ld
-	$(LD) -T gba.ld -o $@ $(ALL_OBJS)
+$(ROM_NAME).elf: $(ALL_OBJS) gba.ld syms.ld
+	$(LD) -T gba.ld -Map firered.map -o $@ $(ALL_OBJS)
 
 # ─── Extract raw ROM binary ─────────────────────────────────────────────
 $(ROM_NAME).gba: $(ROM_NAME).elf

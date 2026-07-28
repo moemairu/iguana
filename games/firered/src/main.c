@@ -141,3 +141,13 @@ AgbMain:\n\
     .short 0x30E4\n\
     .short 0x0300\n\
 ");
+
+typedef unsigned char u8;
+extern u8 sub_800B178(void);
+extern void sub_8000510(void);
+
+void sub_80004B0(void) {
+    if (sub_800B178() == 0) {
+        sub_8000510();
+    }
+}

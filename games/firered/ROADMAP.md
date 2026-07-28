@@ -69,7 +69,7 @@ Progress by subsystem:
 | Subsystem | Status | Notes |
 |---|---|---|
 | CRT0 / startup | **100%** | Matched assembly (`asm/crt0.s`) |
-| AgbMain / Game Loop | **5%** | C pipeline established (`src/main.c`) |
+| AgbMain / Game Loop | **10%** | Decompiled `sub_80004B0` to C in `src/main.c` |
 | BIOS wrappers | not started | |
 | Math / utility lib | not started | |
 | DMA / memory | not started | |
@@ -118,3 +118,4 @@ through the defined checkpoint.
 | 2026-07-29 | 2 | Implemented `disasm.py` to chunk the 16 MiB ROM into manageable 1MB `.s` bank files via `.incbin`. Replaced monolithic `rest.s`. `make compare` passes. |
 | 2026-07-29 | 3 | Fully disassembled `crt0` (metadata, entry point, IntrMain dispatcher) into byte-matching GNU Assembly, replacing the `.incbin`. |
 | 2026-07-29 | 3 | Established C compilation pipeline via `Makefile` using `agb-thumb-cc`. Extracted `AgbMain` bytes from `bank_00` into `src/main.c` via inline assembly. `make compare` passes. |
+| 2026-07-29 | 3 | Decompiled `sub_80004B0` to matching C code in `src/main.c`. Solved ARM/Thumb linker veneer bug by declaring unresolved functions in `asm/syms.s` as `.thumb_func`. |

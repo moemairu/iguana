@@ -1,10 +1,12 @@
 /* gba.ld — GBA linker script for Pokémon FireRed matching build */
 
+OUTPUT_ARCH(arm)
+
 ENTRY(_start)
 
 MEMORY
 {
-    rom   (rx)  : ORIGIN = 0x08000000, LENGTH = 16M
+    rom   (rx)  : ORIGIN = 0x08000000, LENGTH = 17M
     ewram (rwx) : ORIGIN = 0x02000000, LENGTH = 256K
     iwram (rwx) : ORIGIN = 0x03000000, LENGTH = 32K
 }
