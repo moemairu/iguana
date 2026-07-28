@@ -69,7 +69,7 @@ Progress by subsystem:
 | Subsystem | Status | Notes |
 |---|---|---|
 | CRT0 / startup | **100%** | Matched assembly (`asm/crt0.s`) |
-| AgbMain / Game Loop | **10%** | Decompiled `sub_80004B0` to C in `src/main.c` |
+| AgbMain / Game Loop | **30%** | Extracted AgbMain (up to 0x1028) into `src/main.c` as matching asm wrappers |
 | BIOS wrappers | not started | |
 | Math / utility lib | not started | |
 | DMA / memory | not started | |
@@ -119,3 +119,4 @@ through the defined checkpoint.
 | 2026-07-29 | 3 | Fully disassembled `crt0` (metadata, entry point, IntrMain dispatcher) into byte-matching GNU Assembly, replacing the `.incbin`. |
 | 2026-07-29 | 3 | Established C compilation pipeline via `Makefile` using `agb-thumb-cc`. Extracted `AgbMain` bytes from `bank_00` into `src/main.c` via inline assembly. `make compare` passes. |
 | 2026-07-29 | 3 | Decompiled `sub_80004B0` to matching C code in `src/main.c`. Solved ARM/Thumb linker veneer bug by declaring unresolved functions in `asm/syms.s` as `.thumb_func`. |
+| 2026-07-29 | 3 | Mass-extracted remaining `AgbMain` module functions (up to `0x1028`) into `main.c` as matching assembly wrappers to preserve literal pools. Build continues to 100% byte-match. |
