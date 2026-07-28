@@ -1,34 +1,55 @@
-# Pokémon FireRed — Matching Decompilation Build
+# Makefile — Pokémon FireRed matching build
 #
-# Stub Makefile. Will be fleshed out during Phase 1–2.
+# Build pipeline:
+#   asm/*.s → arm-none-eabi-as → *.o → arm-none-eabi-ld → firered.elf → objcopy → firered.gba
 #
-# Usage:
-#   make              — build ROM from source
-#   make compare      — build and byte-diff against baserom.gba
-#   make clean        — remove build artifacts
+# Targets:
+#   make          — build firered.gba
+#   make compare  — verify byte-identical match against baserom.gba
+#   make clean    — remove build artifacts
 
-ROMNAME := pokefirered
-BASEROM := baserom.gba
+ROM_NAME     := firered
+BASEROM      := baserom.gba
+ROM_SHA1     := 41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc
 
-# Tools (paths will be set during Phase 0)
-AS      := arm-none-eabi-as
-LD      := arm-none-eabi-ld
-OBJCOPY := arm-none-eabi-objcopy
-CC      := # agbcc path TBD
-COMPARE := ../../tools/build-compare/compare.sh
+# Tools
+AS       := arm-none-eabi-as
+LD       := arm-none-eabi-ld
+OBJCOPY  := arm-none-eabi-objcopy
+SHA1SUM  := sha1sum
 
+# Flags
+ASFLAGS  := -mcpu=arm7tdmi -mthumb-interwork
+
+# Source files (order matters for linking)
+ASM_SRCS := asm/rom_header.s asm/crt0.s asm/rest.s
+ASM_OBJS := $(ASM_SRCS:.s=.o)
+
+# Build directory
+BUILD    := build
+
+# ─── Default target ──────────────────────────────────────────────────────
 .PHONY: all compare clean
 
-all:
-	@echo "Build not yet configured — complete Phase 1 first."
+all: $(ROM_NAME).gba
 
-compare: all
-	@echo "Comparing built ROM against $(BASEROM)..."
-	@if [ ! -f $(BASEROM) ]; then \
-		echo "ERROR: $(BASEROM) not found. Place your ROM at games/firered/$(BASEROM)"; \
-		exit 1; \
-	fi
-	@echo "Build not yet configured — compare will work after Phase 2."
+# ─── Assemble ────────────────────────────────────────────────────────────
+%.o: %.s $(BASEROM)
+	$(AS) $(ASFLAGS) -o $@ $<
 
+# ─── Link ────────────────────────────────────────────────────────────────
+$(ROM_NAME).elf: $(ASM_OBJS) gba.ld
+	$(LD) -T gba.ld -o $@ $(ASM_OBJS)
+
+# ─── Extract raw ROM binary ─────────────────────────────────────────────
+$(ROM_NAME).gba: $(ROM_NAME).elf
+	$(OBJCOPY) -O binary $< $@
+
+# ─── Compare against original ROM ───────────────────────────────────────
+compare: $(ROM_NAME).gba
+	@echo "$(ROM_SHA1)  $(ROM_NAME).gba" | $(SHA1SUM) -c -
+	@echo "ROM matches! ✓"
+
+# ─── Clean ───────────────────────────────────────────────────────────────
 clean:
-	@echo "Nothing to clean yet."
+	rm -f $(ASM_OBJS) $(ROM_NAME).elf $(ROM_NAME).gba

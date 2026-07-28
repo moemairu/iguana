@@ -37,13 +37,13 @@ identical output to a known-good reference.
 
 ---
 
-## Phase 1 — ROM Analysis & Project Skeleton
+## Phase 1 — ROM Analysis & Project Skeleton ✅ DONE
 
-- [ ] Load `baserom.gba` into Ghidra (ARM Little Endian / v4T)
-- [ ] Identify GBA ROM header and entry point
-- [ ] Disassemble `crt0` / startup code
-- [ ] Scaffold folder structure (`asm/`, `src/`, `data/`, `include/`)
-- [ ] Create initial `Makefile`
+- [x] Load `baserom.gba` into Ghidra (ARM Little Endian / v4T)
+- [x] Identify GBA ROM header and entry point
+- [x] Disassemble `crt0` / startup code
+- [x] Scaffold folder structure (`asm/`, `src/`, `data/`, `include/`)
+- [x] Create initial `Makefile`
 
 **Done when**: skeleton exists, entry point is identified and
 disassembled from this ROM.
@@ -113,3 +113,4 @@ through the defined checkpoint.
 |---|---|---|
 | 2026-07-29 | 0 | Initial project scaffold created. |
 | 2026-07-29 | 0 | Built matching compiler from upstream GCC 2.95.3 (ARM + Thumb). Binutils 2.46.1 installed. Both compilers verified with test program. |
+| 2026-07-29 | 1 | Completed initial ROM analysis. Created linker script, Makefile, and extracted ROM header and crt0 as assembly. Monolithic ROM rebuilds to byte-identical match. |
