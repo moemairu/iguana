@@ -1,0 +1,30 @@
+# ROMs — user-supplied, never committed
+games/*/baserom.*
+
+# Build artifacts
+*.o
+*.elf
+*.gba
+*.bin
+*.map
+*.ld.bak
+
+# Editor / OS temporaries
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Ghidra project files (large, user-local)
+*.gpr
+*.rep/
+
+# Python
+__pycache__/
+*.pyc
+
+# Build directories
+build/
