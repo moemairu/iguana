@@ -16,7 +16,7 @@ SECTIONS
     .text : {
         asm/rom_header.o(.text)
         asm/crt0.o(.text)
-        asm/rest.o(.text)
+        asm/bank_*.o(.text)
     } > rom
 
     /* Discard everything else silently */

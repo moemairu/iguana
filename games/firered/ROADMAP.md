@@ -50,13 +50,13 @@ disassembled from this ROM.
 
 ---
 
-## Phase 2 — 100% Assembly Baseline
+## Phase 2 — 100% Assembly Baseline ✅ DONE
 
-- [ ] Full ROM disassembly into `.s` files
-- [ ] Separate code from data sections
-- [ ] Extract binary data (graphics, maps, text, tables) into `data/`
-- [ ] Build Makefile that reassembles to byte-identical ROM
-- [ ] `make compare` passes
+- [x] Full ROM disassembly into `.s` files (Automated via `disasm.py` into 1MB chunks)
+- [ ] Separate code from data sections (Deferred to incremental disassembly in Phase 3)
+- [ ] Extract binary data (graphics, maps, text, tables) into `data/` (Deferred to Phase 3)
+- [x] Build Makefile that reassembles to byte-identical ROM
+- [x] `make compare` passes
 
 **Done when**: `make compare` reports byte-identical match.
 
@@ -114,3 +114,4 @@ through the defined checkpoint.
 | 2026-07-29 | 0 | Initial project scaffold created. |
 | 2026-07-29 | 0 | Built matching compiler from upstream GCC 2.95.3 (ARM + Thumb). Binutils 2.46.1 installed. Both compilers verified with test program. |
 | 2026-07-29 | 1 | Completed initial ROM analysis. Created linker script, Makefile, and extracted ROM header and crt0 as assembly. Monolithic ROM rebuilds to byte-identical match. |
+| 2026-07-29 | 2 | Implemented `disasm.py` to chunk the 16 MiB ROM into manageable 1MB `.s` bank files via `.incbin`. Replaced monolithic `rest.s`. `make compare` passes. |

@@ -22,7 +22,7 @@ SHA1SUM  := sha1sum
 ASFLAGS  := -mcpu=arm7tdmi -mthumb-interwork
 
 # Source files (order matters for linking)
-ASM_SRCS := asm/rom_header.s asm/crt0.s asm/rest.s
+ASM_SRCS := asm/rom_header.s asm/crt0.s $(sort $(wildcard asm/bank_*.s))
 ASM_OBJS := $(ASM_SRCS:.s=.o)
 
 # Build directory
