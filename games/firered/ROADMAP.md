@@ -68,7 +68,7 @@ Progress by subsystem:
 
 | Subsystem | Status | Notes |
 |---|---|---|
-| CRT0 / startup | not started | |
+| CRT0 / startup | **100%** | Matched assembly (`asm/crt0.s`) |
 | BIOS wrappers | not started | |
 | Math / utility lib | not started | |
 | DMA / memory | not started | |
@@ -115,3 +115,4 @@ through the defined checkpoint.
 | 2026-07-29 | 0 | Built matching compiler from upstream GCC 2.95.3 (ARM + Thumb). Binutils 2.46.1 installed. Both compilers verified with test program. |
 | 2026-07-29 | 1 | Completed initial ROM analysis. Created linker script, Makefile, and extracted ROM header and crt0 as assembly. Monolithic ROM rebuilds to byte-identical match. |
 | 2026-07-29 | 2 | Implemented `disasm.py` to chunk the 16 MiB ROM into manageable 1MB `.s` bank files via `.incbin`. Replaced monolithic `rest.s`. `make compare` passes. |
+| 2026-07-29 | 3 | Fully disassembled `crt0` (metadata, entry point, IntrMain dispatcher) into byte-matching GNU Assembly, replacing the `.incbin`. |
