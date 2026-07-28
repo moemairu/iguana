@@ -1,0 +1,17 @@
+--- a/config.sub
++++ b/config.sub
+@@ Modern config.sub maps thumb→arm; we need thumb preserved as its own
+@@ CPU for GCC 2.95.3's separate thumb.c backend.
+@@
+@@ 1. Remove 'thumb' from the strongarm→arm mapping
+@@ 2. Add 'thumb' and 'thumbel' to the valid CPU list
+@@
+@@ Apply to all config.sub files after replacing with modern versions:
+@@   find gcc-2.95.3 -name config.sub -exec patch {} < patches/002-config-sub-thumb.patch \;
+@@
+@@ Or apply the changes manually:
+@@   - In the CPU alias section, change:
+@@       strongarm-* | thumb-*)  →  strongarm-*)
+@@   - In the valid CPU list, add:
+@@       | thumb | thumbel \
+@@     after the armv* line.

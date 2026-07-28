@@ -28,3 +28,10 @@ __pycache__/
 
 # Build directories
 build/
+
+# Matching compiler (tools/matching-cc) — reproducible via build-toolchain.sh
+tools/matching-cc/gcc-core-*.tar.gz
+tools/matching-cc/gcc-2.95.3/
+tools/matching-cc/build/
+tools/matching-cc/build-thumb/
+tools/matching-cc/install/

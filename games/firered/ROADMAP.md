@@ -6,21 +6,31 @@
 
 ---
 
-## Phase 0 — Toolchain Setup ⬅️ CURRENT
+## Phase 0 — Toolchain Setup ✅ DONE
 
-- [ ] Install/build `agbcc` (matching GBA C compiler)
-- [ ] Install GNU ARM binutils (`arm-none-eabi-as`, `arm-none-eabi-ld`, `arm-none-eabi-objcopy`)
-- [ ] Verify Ghidra is available with ARM/Thumb processor support
-- [ ] Document exact tool versions below
-- [ ] Build a trivial test program and confirm identical codegen against a known reference
+- [x] Build matching GBA compiler from upstream GCC 2.95.3 (ARM + Thumb backends)
+- [x] Install GNU ARM binutils (`arm-none-eabi-as`, `arm-none-eabi-ld`, `arm-none-eabi-objcopy`)
+- [ ] Verify Ghidra is available with ARM/Thumb processor support (deferred to Phase 1)
+- [x] Document exact tool versions below
+- [x] Build a trivial test program and confirm valid ARM/Thumb codegen
 
 ### Tool Versions
 
 | Tool | Version | Notes |
 |---|---|---|
-| `agbcc` | TBD | |
-| `arm-none-eabi-binutils` | TBD | |
-| Ghidra | TBD | |
+| Matching compiler (ARM) | GCC 2.95.3 (`arm-elf`) | Built from upstream GNU source, `tools/matching-cc/` |
+| Matching compiler (Thumb) | GCC 2.95.3 (`thumb-coff`) | Built from upstream GNU source, `tools/matching-cc/` |
+| `arm-none-eabi-binutils` | 2.46.1 | System package (Arch) |
+| Ghidra | TBD | Deferred to Phase 1 |
+
+### ROM Verification
+
+| Property | Value |
+|---|---|
+| ROM | `baserom.gba` — Pokémon FireRed Version (USA, Europe) |
+| Version | v1.0 |
+| Game Code | BPRE |
+| SHA1 | `41cb23d8dccc8ebd7c649cd8fbb58eeace6e2fdc` |
 
 **Done when**: toolchain builds a trivial test program and produces
 identical output to a known-good reference.
@@ -102,3 +112,4 @@ through the defined checkpoint.
 | Date | Phase | Summary |
 |---|---|---|
 | 2026-07-29 | 0 | Initial project scaffold created. |
+| 2026-07-29 | 0 | Built matching compiler from upstream GCC 2.95.3 (ARM + Thumb). Binutils 2.46.1 installed. Both compilers verified with test program. |

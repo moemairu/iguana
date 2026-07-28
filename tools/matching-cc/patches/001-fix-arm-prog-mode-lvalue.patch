@@ -1,0 +1,11 @@
+--- a/gcc/config/arm/arm.c
++++ b/gcc/config/arm/arm.c
+@@ -527,7 +527,7 @@
+   if ((TARGET_SOFT_FLOAT || arm_fpu != FP_HARD) && (tune_flags & FL_MODE32) == 0)
+     flag_schedule_insns = flag_schedule_insns_after_reload = 0;
+   
+-  arm_prog_mode = TARGET_APCS_32 ? PROG_MODE_PROG32 : PROG_MODE_PROG26;
++  arm_prgmode = TARGET_APCS_32 ? PROG_MODE_PROG32 : PROG_MODE_PROG26;
+   
+   if (structure_size_string != NULL)
+     {
