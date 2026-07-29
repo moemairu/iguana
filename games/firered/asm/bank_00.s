@@ -4,6 +4,5 @@
     .text
     .thumb
 
-    @ Remainder of bank
-    .incbin "baserom.gba", 0xB178, 0xF4E88
+    @ Fully extracted - no incbin remaining
 

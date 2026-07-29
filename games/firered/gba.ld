@@ -22,6 +22,7 @@ SECTIONS
         src/io.o(.text)
         src/intr.o(.text)
         src/gfx.o(.text)
+        src/bank00_tail.o(.text)
         asm/bank_*.o(.text)
     } > rom
 
