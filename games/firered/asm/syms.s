@@ -1,7 +1,18 @@
-
     .thumb_func
     .global sub_81E3B80
 sub_81E3B80 = 0x081E3B80
+
+    .thumb_func
+    .global sub_80F5118
+sub_80F5118 = 0x080F5118
+
+    .thumb_func
+    .global sub_813B870
+sub_813B870 = 0x0813B870
+
+    .thumb_func
+    .global sub_81E3BA8
+sub_81E3BA8 = 0x081E3BA8
 
     .thumb_func
     .global sub_80005C0
