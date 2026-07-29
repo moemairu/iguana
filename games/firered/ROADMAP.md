@@ -67,7 +67,7 @@ disassembled from this ROM.
 - [ ] **Phase 1: Initial Linker Setup & Extraction** (Complete)
 - [ ] **Phase 2: Split Assembly** (Complete)
 - [x] **Phase 3: Incremental Matching Decompilation** (In Progress)
-  - AgbMain / Game Loop | **35%** | Decompiling asm wrappers to actual C code in `src/main.c`. `sub_8000510`, `sub_8000544`, `sub_8000558` perfectly matched.
+  - AgbMain / Game Loop | **50%** | Decompiling asm wrappers to actual C code in `src/main.c`. `sub_80004C4`, `sub_8000510`, `sub_8000544`, `sub_8000558` perfectly matched.
   - Remaining bank_00 | **100%** | Extracted to `src/bank00_tail.c` using `.incbin`
   - Banks 01–0F | **100%** | Extracted to `src/bank*.c` using `.incbin` wrappers
 
@@ -76,7 +76,7 @@ Progress by subsystem:
 | Subsystem | Status | Notes |
 |---|---|---|
 | CRT0 / startup | **100%** | Matched assembly (`asm/crt0.s`) |
-| AgbMain / Game Loop | **35%** | Decompiling asm wrappers to actual C code in `src/main.c`. `sub_8000510`, `sub_8000544`, `sub_8000558` perfectly matched. |
+| AgbMain / Game Loop | **50%** | Decompiling asm wrappers to actual C code in `src/main.c`. `sub_80004C4`, `sub_8000510`, `sub_8000544`, `sub_8000558` perfectly matched. |
 | IO / Display Registers | **asm-extracted** | `src/io.c` — 0x1028–0x2B80 (7 KB) |
 | Interrupt / Task System | **asm-extracted** | `src/intr.c` — 0x2B80–0x7350 (18 KB) |
 | Graphics Utilities | **asm-extracted** | `src/gfx.c` — 0x7350–0xB178 (16 KB) |
@@ -132,3 +132,4 @@ through the defined checkpoint.
 | 2026-07-29 | 3 | Decompiled `sub_80004B0` to matching C code in `src/main.c`. Solved ARM/Thumb linker veneer bug by declaring unresolved functions in `asm/syms.s` as `.thumb_func`. |
 | 2026-07-29 | 3 | Mass-extracted remaining `AgbMain` module functions (up to `0x1028`) into `main.c` as matching assembly wrappers to preserve literal pools. Build continues to 100% byte-match. |
 | 2026-07-29 | 3 | Multi-module extraction: created `src/io.c` (0x1028–0x2B80), `src/intr.c` (0x2B80–0x7350), `src/gfx.c` (0x7350–0xB178). Updated linker script, Makefile. Built automation script for chunk extraction. ~45 KB of code now in named source files. `make compare` passes. |
+| 2026-07-29 | 3 | Decompiled `sub_80004C4`, `sub_8000510`, `sub_8000544`, `sub_8000558`. Encountered compiler padding quirks in `sub_8000564`, skipped to maintain momentum. `make compare` 100% matches. |
