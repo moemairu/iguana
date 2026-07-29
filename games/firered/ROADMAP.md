@@ -69,7 +69,7 @@ disassembled from this ROM.
 - [x] **Phase 3: Incremental Matching Decompilation** (In Progress)
   - AgbMain / Game Loop | **35%** | Decompiling asm wrappers to actual C code in `src/main.c`. `sub_8000510`, `sub_8000544`, `sub_8000558` perfectly matched.
   - Remaining bank_00 | **100%** | Extracted to `src/bank00_tail.c` using `.incbin`
-  - Banks 01–0F | **not started** | Needs extraction script (available as `extract_bank.py`)
+  - Banks 01–0F | **100%** | Extracted to `src/bank*.c` using `.incbin` wrappers
 
 Progress by subsystem:
 
