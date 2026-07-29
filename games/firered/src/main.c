@@ -670,65 +670,39 @@ sub_80005E8:\n\
     .short 0x30F0\n\
     .short 0x0300\n\
 ");
+extern void sub_81DD728(void);
+extern void sub_8087E64(void);
+extern void sub_81E3B84(u32);
+
+typedef volatile u16 vu16;
+
+void sub_80008D8(void) {
+    *(vu16*)0x04000208 = 0;
+    sub_81DD728();
+    sub_8087E64();
+
+    {
+        vu16 *dma = (vu16 *)0x040000BC;
+        dma[5] &= 0xC5FF;
+        dma[5] &= 0x7FFF;
+        dma[5];
+    }
+    {
+        vu16 *dma = (vu16 *)0x040000C8;
+        dma[5] &= 0xC5FF;
+        dma[5] &= 0x7FFF;
+        dma[5];
+    }
+    {
+        vu16 *dma = (vu16 *)0x040000D4;
+        dma[5] &= 0xC5FF;
+        dma[5] &= 0x7FFF;
+        dma[5];
+    }
+
+    sub_81E3B84(223);
+}
 __asm__("\n\
-    .align 2\n\
-    .thumb_func\n\
-    .global sub_80008D8\n\
-sub_80008D8:\n\
-    .short 0xB510\n\
-    .short 0x4915\n\
-    .short 0x2000\n\
-    .short 0x8008\n\
-    .short 0xF1DC\n\
-    .short 0xFF22\n\
-    .short 0xF087\n\
-    .short 0xFABE\n\
-    .short 0x4912\n\
-    .short 0x894A\n\
-    .short 0x4B12\n\
-    .short 0x1C18\n\
-    .short 0x4010\n\
-    .short 0x8148\n\
-    .short 0x894C\n\
-    .short 0x4A11\n\
-    .short 0x1C10\n\
-    .short 0x4020\n\
-    .short 0x8148\n\
-    .short 0x8948\n\
-    .short 0x310C\n\
-    .short 0x894C\n\
-    .short 0x1C18\n\
-    .short 0x4020\n\
-    .short 0x8148\n\
-    .short 0x894C\n\
-    .short 0x1C10\n\
-    .short 0x4020\n\
-    .short 0x8148\n\
-    .short 0x8948\n\
-    .short 0x480A\n\
-    .short 0x8941\n\
-    .short 0x400B\n\
-    .short 0x8143\n\
-    .short 0x8941\n\
-    .short 0x400A\n\
-    .short 0x8142\n\
-    .short 0x8940\n\
-    .short 0x20DF\n\
-    .short 0xF1E3\n\
-    .short 0xF92D\n\
-    .short 0xBC10\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x0208\n\
-    .short 0x0400\n\
-    .short 0x00BC\n\
-    .short 0x0400\n\
-    .short 0xC5FF\n\
-    .short 0x0000\n\
-    .short 0x7FFF\n\
-    .short 0x0000\n\
-    .short 0x00D4\n\
-    .short 0x0400\n\
     .short 0xB500\n\
     .short 0xB081\n\
     .short 0x4669\n\

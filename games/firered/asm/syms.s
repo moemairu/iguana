@@ -131,3 +131,20 @@ gUnknown_0202552C = 0x0202552C
     .global gUnknown_03005E88
 gUnknown_03005E88 = 0x03005E88
 
+    .thumb_func
+    .global sub_81DD728
+sub_81DD728 = 0x081DD728
+
+    .thumb_func
+    .global sub_8087E64
+sub_8087E64 = 0x08087E64
+
+    .thumb_func
+    .global sub_81E3B84
+sub_81E3B84 = 0x081E3B84
+
+    .global gUnknown_030030E0
+gUnknown_030030E0 = 0x030030E0
+
+    .global gUnknown_0300500C_ptr
+gUnknown_0300500C_ptr = 0x0300500C
