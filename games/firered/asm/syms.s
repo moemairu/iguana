@@ -162,7 +162,6 @@ sub_800106C = 0x0800106C
     .global sub_80013F4
     .thumb_func
 sub_80013F4 = 0x080013F4
-
     .global sub_80014DC
     .thumb_func
 sub_80014DC = 0x080014DC
