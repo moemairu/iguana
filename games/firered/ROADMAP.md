@@ -64,16 +64,23 @@ disassembled from this ROM.
 
 ## Phase 3 — Incremental Matching Decompilation
 
+- [ ] **Phase 1: Initial Linker Setup & Extraction** (Complete)
+- [ ] **Phase 2: Split Assembly** (Complete)
+- [x] **Phase 3: Incremental Matching Decompilation** (In Progress)
+  - AgbMain / Game Loop | **35%** | Decompiling asm wrappers to actual C code in `src/main.c`. `sub_8000510`, `sub_8000544`, `sub_8000558` perfectly matched.
+  - Remaining bank_00 | **100%** | Extracted to `src/bank00_tail.c` using `.incbin`
+  - Banks 01–0F | **not started** | Needs extraction script (available as `extract_bank.py`)
+
 Progress by subsystem:
 
 | Subsystem | Status | Notes |
 |---|---|---|
 | CRT0 / startup | **100%** | Matched assembly (`asm/crt0.s`) |
-| AgbMain / Game Loop | **30%** | Extracted 0x4B0–0x1028 into `src/main.c` as asm wrappers |
+| AgbMain / Game Loop | **35%** | Decompiling asm wrappers to actual C code in `src/main.c`. `sub_8000510`, `sub_8000544`, `sub_8000558` perfectly matched. |
 | IO / Display Registers | **asm-extracted** | `src/io.c` — 0x1028–0x2B80 (7 KB) |
 | Interrupt / Task System | **asm-extracted** | `src/intr.c` — 0x2B80–0x7350 (18 KB) |
 | Graphics Utilities | **asm-extracted** | `src/gfx.c` — 0x7350–0xB178 (16 KB) |
-| Remaining bank_00 | not started | 0xB178–0x100000 (980 KB, still incbin) |
+| Remaining bank_00 | **100%** | Extracted to `src/bank00_tail.c` using `.incbin` |
 | BIOS wrappers | not started | |
 | Math / utility lib | not started | |
 | DMA / memory | not started | |
