@@ -170,83 +170,42 @@ void sub_80004B0(void) {
     }
 }
 
-__asm__("\n\
-    .align 2\n\
-    .thumb_func\n\
-    .global sub_80004C4\n\
-sub_80004C4:\n\
-    .short 0xB510\n\
-    .short 0x480B\n\
-    .short 0x2400\n\
-    .short 0x6204\n\
-    .short 0x6244\n\
-    .short 0x6004\n\
-    .short 0x4809\n\
-    .short 0xF000\n\
-    .short 0xF837\n\
-    .short 0x4809\n\
-    .short 0x4909\n\
-    .short 0x6001\n\
-    .short 0x4A09\n\
-    .short 0x480A\n\
-    .short 0x6010\n\
-    .short 0x20F2\n\
-    .short 0x0100\n\
-    .short 0x1809\n\
-    .short 0x600C\n\
-    .short 0x4808\n\
-    .short 0x7004\n\
-    .short 0xBC10\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x30F0\n\
-    .short 0x0300\n\
-    .short 0xC821\n\
-    .short 0x080E\n\
-    .short 0x500C\n\
-    .short 0x0300\n\
-    .short 0x4588\n\
-    .short 0x0202\n\
-    .short 0x5008\n\
-    .short 0x0300\n\
-    .short 0x552C\n\
-    .short 0x0202\n\
-    .short 0x5E88\n\
-    .short 0x0300\n\
-");
+extern void *gUnknown_0300500C;
+extern void *gUnknown_03005008;
+extern u8 gUnknown_03005E88;
 
-__asm__("\n\
-    .align 2\n\
-    .thumb_func\n\
-    .global sub_8000510\n\
-sub_8000510:\n\
-    .short 0xB510\n\
-    .short 0xF0F4\n\
-    .short 0xFE01\n\
-    .short 0x2800\n\
-    .short 0xD10F\n\
-    .short 0xF13B\n\
-    .short 0xF9A9\n\
-    .short 0x0600\n\
-    .short 0x2800\n\
-    .short 0xD10A\n\
-    .short 0x4C06\n\
-    .short 0x6820\n\
-    .short 0x2800\n\
-    .short 0xD001\n\
-    .short 0xF1E3\n\
-    .short 0xFB3C\n\
-    .short 0x6860\n\
-    .short 0x2800\n\
-    .short 0xD001\n\
-    .short 0xF1E3\n\
-    .short 0xFB37\n\
-    .short 0xBC10\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x30F0\n\
-    .short 0x0300\n\
-");
+extern u8 gUnknown_02024588[];
+extern u8 gUnknown_0202552C[];
+
+extern void sub_8000544(u32);
+
+void sub_80004C4(void) {
+    gUnknown_030030F0.unk_20 = 0;
+    gUnknown_030030F0.unk_24 = 0;
+    gUnknown_030030F0.unk_00 = 0;
+    sub_8000544(0x080EC821);
+    gUnknown_0300500C = gUnknown_02024588;
+    gUnknown_03005008 = gUnknown_0202552C;
+    *(u32*)(&gUnknown_02024588[3872]) = 0;
+    gUnknown_03005E88 = 0;
+}
+
+extern u32 sub_80F5118(void);
+extern u8 sub_813B870(void);
+extern void sub_81E3BA8(void);
+
+void sub_8000510(void) {
+    if (sub_80F5118() == 0) {
+        if (sub_813B870() == 0) {
+            if (gUnknown_030030F0.unk_00 != 0) {
+                sub_81E3BA8();
+            }
+            if (gUnknown_030030F0.unk_04 != 0) {
+                sub_81E3BA8();
+            }
+        }
+    }
+}
 
 void sub_8000544(u32 a0) {
     gUnknown_030030F0.unk_04 = a0;

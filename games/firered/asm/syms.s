@@ -115,3 +115,19 @@ sub_80005B4 = 0x080005B4
 
     .global gUnknown_030030F0
 gUnknown_030030F0 = 0x030030F0
+
+    .global gUnknown_0300500C
+gUnknown_0300500C = 0x0300500C
+
+    .global gUnknown_02024588
+gUnknown_02024588 = 0x02024588
+
+    .global gUnknown_03005008
+gUnknown_03005008 = 0x03005008
+
+    .global gUnknown_0202552C
+gUnknown_0202552C = 0x0202552C
+
+    .global gUnknown_03005E88
+gUnknown_03005E88 = 0x03005E88
+

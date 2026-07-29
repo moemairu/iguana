@@ -16,12 +16,22 @@ struct Unk030030F0 {
 };
 
 extern struct Unk030030F0 gUnknown_030030F0;
+extern void sub_8000544(u32);
 
-void sub_8000544(u32 a0) {
-    gUnknown_030030F0.unk_04 = a0;
-    gUnknown_030030F0.unk_438 = 0;
-}
+extern void *gUnknown_0300500C;
+extern void *gUnknown_03005008;
+extern u8 gUnknown_03005E88;
 
-void sub_8000558(void) {
-    *(volatile u16*)0x04000106 = 0x80;
+extern u8 gUnknown_02024588[];
+extern u8 gUnknown_0202552C[];
+
+void sub_80004C4(void) {
+    gUnknown_030030F0.unk_20 = 0;
+    gUnknown_030030F0.unk_24 = 0;
+    gUnknown_030030F0.unk_00 = 0;
+    sub_8000544(0x080EC821);
+    gUnknown_0300500C = gUnknown_02024588;
+    gUnknown_03005008 = gUnknown_0202552C;
+    *(u32*)(&gUnknown_02024588[3872]) = 0;
+    gUnknown_03005E88 = 0;
 }
