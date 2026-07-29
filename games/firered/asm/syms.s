@@ -167,3 +167,6 @@ sub_80013F4 = 0x080013F4
 sub_80014DC = 0x080014DC
 
 
+    .global sub_8000EAC
+    .thumb_func
+sub_8000EAC = 0x08000EAC
