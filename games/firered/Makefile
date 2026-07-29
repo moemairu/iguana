@@ -45,8 +45,10 @@ all: $(ROM_NAME).gba
 	$(AS) $(ASFLAGS) -o $@ $<
 
 # ─── Compile C ───────────────────────────────────────────────────────────
-%.s: %.c
-	$(CC) $(CFLAGS) -S -o $@ $<
+%.o: %.c
+	$(CC) $(CFLAGS) -S -o $*.s $<
+	sed -i 's/\.align\s\+2/.align 2, 0/g' $*.s
+	$(AS) $(ASFLAGS) -o $@ $*.s
 
 # ─── Link ────────────────────────────────────────────────────────────────
 $(ROM_NAME).elf: $(ALL_OBJS) gba.ld syms.ld

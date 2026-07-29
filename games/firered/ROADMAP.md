@@ -115,6 +115,8 @@ struct Unk030030F0 {
 | Function | Address | Status | Notes |
 |---|---|---|---|
 | `sub_8001028` | `0x08001028` | ✅ C matched | Clears `EngineState->field_10`. Calls `sub_800106C` and `sub_80013F4`. |
+| `sub_80019BC` | `0x080019BC` | ✅ C matched |
+| `sub_80019D0` | `0x080019D0` | ✅ C matched |
 | `sub_8001040` | `0x08001040` | ⚠️ ASM wrapper | Mapped, logic known. Register allocation differs (`r2` vs `r3`). |
 | `sub_800105C` | `0x0800105C` | ⚠️ ASM wrapper | Mapped, logic known. Instruction order differs (`ldr` vs `movs`). |
 | `sub_800106C` | `0x0800106C` | ⚠️ ASM wrapper | Mapped, logic known. ABI quirk: `push {lr}` without `bl`. |
@@ -192,3 +194,4 @@ struct Unk030030F0 {
 | 2026-07-29 | 3 | Decompiled `sub_80004C4`, `sub_8000510`, `sub_8000544`, `sub_8000558`. Padding quirk in `sub_8000564` noted; skipped. `make compare` 100% match. |
 | 2026-07-29 | 3 | Decompiled `sub_80008D8` (DMA stop + interrupt disable + reset). Investigated `sub_80005E8` (key handler) and `sub_8000BFC` (OAM clear) — both have `push{lr}` leaf ABI quirk. Completed full `struct Unk030030F0` layout (8 u16 key fields). All external symbols added to `asm/syms.s`. `make compare` 100% match. |
 | 2026-07-29 | 3 | IO.C Phase 2 and 3: Mapped EngineState at 0x030008D0. Ported sub_8001028 to perfect C. Kept rest as ASM wrappers due to GCC 2.95.3 padding/literal pool shifting limitations. make compare passes. |
+| 2026-07-29 | 3.5 | Solved GCC padding mismatch (46c0 vs 0000) using Makefile sed post-processor. Restored sub_80019BC and 19D0 to pure C. make compare passes. |

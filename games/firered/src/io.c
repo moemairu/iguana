@@ -52,6 +52,9 @@ extern struct BgMetadata gUnknown_030008E8[4]; // 0x030008E8 - 0x03000927
 
 extern void sub_800106C(void);
 extern void sub_80013F4(void);
+extern void sub_8001320(u8);
+extern void sub_800139C(u8);
+extern void sub_80013D0(void);
 
 // ==========================================
 // End Hardware Map
@@ -1278,26 +1281,19 @@ __asm__("\n\
     .short 0xBCF0\n\
     .short 0xBC02\n\
     .short 0x4708\n\
-    .short 0xB500\n\
-    .short 0x0600\n\
-    .short 0x0E00\n\
-    .short 0xF7FF\n\
-    .short 0xFCAD\n\
-    .short 0xF7FF\n\
-    .short 0xFD03\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x0000\n\
-    .short 0xB500\n\
-    .short 0x0600\n\
-    .short 0x0E00\n\
-    .short 0xF7FF\n\
-    .short 0xFCE1\n\
-    .short 0xF7FF\n\
-    .short 0xFCF9\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x0000\n\
+");
+
+void sub_80019BC(u32 bg) {
+    sub_8001320((u8)bg);
+    sub_80013D0();
+}
+
+void sub_80019D0(u32 bg) {
+    sub_800139C((u8)bg);
+    sub_80013D0();
+}
+__asm__("\n\
+    .align 2\n\
     .short 0xB510\n\
     .short 0xB084\n\
     .short 0x0600\n\
