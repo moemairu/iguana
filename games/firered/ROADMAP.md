@@ -69,7 +69,11 @@ Progress by subsystem:
 | Subsystem | Status | Notes |
 |---|---|---|
 | CRT0 / startup | **100%** | Matched assembly (`asm/crt0.s`) |
-| AgbMain / Game Loop | **30%** | Extracted AgbMain (up to 0x1028) into `src/main.c` as matching asm wrappers |
+| AgbMain / Game Loop | **30%** | Extracted 0x4B0–0x1028 into `src/main.c` as asm wrappers |
+| IO / Display Registers | **asm-extracted** | `src/io.c` — 0x1028–0x2B80 (7 KB) |
+| Interrupt / Task System | **asm-extracted** | `src/intr.c` — 0x2B80–0x7350 (18 KB) |
+| Graphics Utilities | **asm-extracted** | `src/gfx.c` — 0x7350–0xB178 (16 KB) |
+| Remaining bank_00 | not started | 0xB178–0x100000 (980 KB, still incbin) |
 | BIOS wrappers | not started | |
 | Math / utility lib | not started | |
 | DMA / memory | not started | |
@@ -120,3 +124,4 @@ through the defined checkpoint.
 | 2026-07-29 | 3 | Established C compilation pipeline via `Makefile` using `agb-thumb-cc`. Extracted `AgbMain` bytes from `bank_00` into `src/main.c` via inline assembly. `make compare` passes. |
 | 2026-07-29 | 3 | Decompiled `sub_80004B0` to matching C code in `src/main.c`. Solved ARM/Thumb linker veneer bug by declaring unresolved functions in `asm/syms.s` as `.thumb_func`. |
 | 2026-07-29 | 3 | Mass-extracted remaining `AgbMain` module functions (up to `0x1028`) into `main.c` as matching assembly wrappers to preserve literal pools. Build continues to 100% byte-match. |
+| 2026-07-29 | 3 | Multi-module extraction: created `src/io.c` (0x1028–0x2B80), `src/intr.c` (0x2B80–0x7350), `src/gfx.c` (0x7350–0xB178). Updated linker script, Makefile. Built automation script for chunk extraction. ~45 KB of code now in named source files. `make compare` passes. |

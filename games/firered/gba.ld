@@ -19,6 +19,9 @@ SECTIONS
         asm/rom_header.o(.text)
         asm/crt0.o(.text)
         src/main.o(.text)
+        src/io.o(.text)
+        src/intr.o(.text)
+        src/gfx.o(.text)
         asm/bank_*.o(.text)
     } > rom
 

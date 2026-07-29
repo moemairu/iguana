@@ -25,12 +25,12 @@ CFLAGS   := -O2 -mthumb-interwork
 
 # Source files (order matters for linking)
 ASM_SRCS := asm/rom_header.s asm/crt0.s asm/syms.s $(sort $(wildcard asm/bank_*.s))
-C_SRCS   := src/main.c
+C_SRCS   := src/main.c src/io.c src/intr.c src/gfx.c
 
 # Object files
 ASM_OBJS := $(ASM_SRCS:.s=.o)
 C_OBJS   := $(C_SRCS:.c=.o)
-ALL_OBJS := asm/rom_header.o asm/crt0.o asm/syms.o $(C_OBJS) $(sort $(wildcard asm/bank_*.o))
+ALL_OBJS := asm/rom_header.o asm/crt0.o asm/syms.o src/main.o src/io.o src/intr.o src/gfx.o $(sort $(wildcard asm/bank_*.o))
 
 # Build directory
 BUILD    := build

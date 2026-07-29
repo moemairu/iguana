@@ -5,5 +5,5 @@
     .thumb
 
     @ Remainder of bank
-    .incbin "baserom.gba", 0x1028, 0xFEFD8
+    .incbin "baserom.gba", 0xB178, 0xF4E88
 

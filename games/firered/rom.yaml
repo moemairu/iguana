@@ -2,7 +2,7 @@ rom: baserom.gba
 out_dir: asm
 banks:
 - name: bank_00
-  start: 4136
+  start: 45432
   end: 1048576
 - name: bank_01
   start: 1048576

@@ -3,11 +3,8 @@
 sub_800B178 = 0x0800B178
 
     .thumb_func
-    .thumb_func
     .global sub_81E3B80
 sub_81E3B80 = 0x081E3B80
-
-
 
     .thumb_func
     .global sub_80005C0
@@ -37,16 +34,6 @@ sub_804BFE4 = 0x0804BFE4
     .global sub_8071938
 sub_8071938 = 0x08071938
 
-
-
-    .thumb_func
-    .global sub_8001028
-sub_8001028 = 0x08001028
-
-    .thumb_func
-    .global sub_8002B80
-sub_8002B80 = 0x08002B80
-
     .thumb_func
     .global sub_80F79C8
 sub_80F79C8 = 0x080F79C8
@@ -59,8 +46,6 @@ sub_80F50F4 = 0x080F50F4
     .global sub_81E37A8
 sub_81E37A8 = 0x081E37A8
 
-
-
     .thumb_func
     .global sub_81E09D4
 sub_81E09D4 = 0x081E09D4
@@ -69,8 +54,6 @@ sub_81E09D4 = 0x081E09D4
     .global sub_81E08F8
 sub_81E08F8 = 0x081E08F8
 
-
-
     .thumb_func
     .global sub_80582E0
 sub_80582E0 = 0x080582E0
@@ -78,10 +61,6 @@ sub_80582E0 = 0x080582E0
     .thumb_func
     .global sub_8058274
 sub_8058274 = 0x08058274
-
-    .thumb_func
-    .global sub_8007350
-sub_8007350 = 0x08007350
 
     .thumb_func
     .global sub_805486C
