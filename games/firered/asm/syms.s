@@ -196,3 +196,11 @@ sub_8000EAC = 0x08000EAC
 .global gUnknown_030008E0
 .equ gUnknown_030008E0, 0x030008E0
 
+.global gUnknown_03000A38
+.equ gUnknown_03000A38, 0x03000A38
+.global gUnknown_03000A3C
+.equ gUnknown_03000A3C, 0x03000A3C
+
+.global sub_8002948
+.equ sub_8002948, 0x08002948
+

@@ -1,8 +1,20 @@
+// ==========================================
+// Phase 4: Interrupt & Task System (intr.c)
+// ==========================================
+
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned int u32;
+
+extern void *gUnknown_03000A38;
+extern void *gUnknown_03000A3C;
+extern void sub_8002948(void);
+
+// ==========================================
+// End Headers
+// ==========================================
 __asm__("\n\
-    .align 2\n\
-    .thumb_func\n\
-    .global sub_8002B80\n\
-sub_8002B80:\n\
+    .align 2, 0\n\
     .short 0xB500\n\
     .short 0x4A04\n\
     .short 0x6010\n\
