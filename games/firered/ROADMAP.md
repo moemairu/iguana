@@ -114,7 +114,7 @@ struct Unk030030F0 {
 
 | Function | Address | Status | Notes |
 |---|---|---|---|
-| `sub_8001028` | `0x08001028` | ✅ C matched | Clears `OamFlags.field_10`. Calls `sub_800106C` and `sub_80013F4`. |
+| `sub_8001028` | `0x08001028` | ✅ C matched | Clears `EngineState->field_10`. Calls `sub_800106C` and `sub_80013F4`. |
 | `sub_8001040` | `0x08001040` | ⚠️ ASM wrapper | Mapped, logic known. Register allocation differs (`r2` vs `r3`). |
 | `sub_800105C` | `0x0800105C` | ⚠️ ASM wrapper | Mapped, logic known. Instruction order differs (`ldr` vs `movs`). |
 | `sub_800106C` | `0x0800106C` | ⚠️ ASM wrapper | Mapped, logic known. ABI quirk: `push {lr}` without `bl`. |
@@ -136,6 +136,8 @@ struct Unk030030F0 {
 | `gUnknown_030008C8` | `0x030008C8` | OAM busy flag |
 | `gUnknown_030008C9` | `0x030008C9` | OAM secondary flag |
 | `gUnknown_030000C8` | `0x030000C8` | OAM shadow buffer (128-entry array) |
+| `gUnknown_030008D0` | `0x030008D0` | `EngineState` struct (Background states + flags) |
+| `gUnknown_030008E8` | `0x030008E8` | Background metadata cache (4 entries) |
 
 ### Phase 3 Overall Progress
 
@@ -189,3 +191,4 @@ struct Unk030030F0 {
 | 2026-07-29 | 3 | Banks 01–0F extracted into individual `src/bank*.c` files. `make compare` 100% pass. |
 | 2026-07-29 | 3 | Decompiled `sub_80004C4`, `sub_8000510`, `sub_8000544`, `sub_8000558`. Padding quirk in `sub_8000564` noted; skipped. `make compare` 100% match. |
 | 2026-07-29 | 3 | Decompiled `sub_80008D8` (DMA stop + interrupt disable + reset). Investigated `sub_80005E8` (key handler) and `sub_8000BFC` (OAM clear) — both have `push{lr}` leaf ABI quirk. Completed full `struct Unk030030F0` layout (8 u16 key fields). All external symbols added to `asm/syms.s`. `make compare` 100% match. |
+| 2026-07-29 | 3 | IO.C Phase 2 and 3: Mapped EngineState at 0x030008D0. Ported sub_8001028 to perfect C. Kept rest as ASM wrappers due to GCC 2.95.3 padding/literal pool shifting limitations. make compare passes. |

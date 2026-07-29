@@ -1,30 +1,69 @@
+// ==========================================
+// Phase 3: Hardware Registers & Engine Map
+// ==========================================
+
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
 
-struct OamFlags {
-    u32 arr[4];
-    u16 field_10;
-};
-#define REG_OAM ((struct OamFlags*)0x030008D0)
+// Display Control Register (REG_DISPCNT)
+#define REG_DISPCNT ((volatile u16*)0x04000000)
+// Display Status Register (REG_DISPSTAT)
+#define REG_DISPSTAT ((volatile u16*)0x04000004)
+// VCount Register (REG_VCOUNT)
+#define REG_VCOUNT ((volatile u16*)0x04000006)
 
-extern u32 gUnknown_081E9F64;
+// OAM (Object Attribute Memory)
+#define REG_OAM ((volatile u16*)0x07000000)
+
+// ------------------------------------------
+// Engine Global Variables (IWRAM mapped)
+// ------------------------------------------
+
+// Background configuration struct (4 bytes per BG)
+struct BgConfig {
+    u16 visible : 1;
+    u16 filler_1 : 1;
+    u16 charBaseBlock : 2;
+    u16 screenSize : 2;
+    u16 bit6 : 1;
+    u16 colorMode : 1;
+    u16 priority : 2;
+    u16 screenBaseBlock : 5;
+    u16 bit15 : 1;
+    u16 unk2;
+};
+
+// Represents the global engine state starting at 0x030008D0
+struct EngineState {
+    struct BgConfig bgConfig[4]; // 16 bytes (offset 0x0)
+    u16 field_10;                // 2 bytes  (offset 0x10 = 16)
+};
+#define REG_ENGINE_STATE ((struct EngineState*)0x030008D0)
+
+// Background metadata cache (16 bytes per BG)
+struct BgMetadata {
+    u32 ptr0;
+    void *ptr4;
+    u32 ptr8;
+    u32 ptr12;
+};
+extern struct BgMetadata gUnknown_030008E8[4]; // 0x030008E8 - 0x03000927
 
 extern void sub_800106C(void);
 extern void sub_80013F4(void);
-extern u8 sub_80014DC(u8);
+
+// ==========================================
+// End Hardware Map
+// ==========================================
 
 void sub_8001028(void) {
     sub_800106C();
-    REG_OAM->field_10 = 0;
+    REG_ENGINE_STATE->field_10 = 0;
     sub_80013F4();
 }
-
 __asm__("\n\
     .align 2\n\
-    .thumb_func\n\
-    .global sub_8001040\n\
-sub_8001040:\n\
     .short 0x0600\n\
     .short 0x0E00\n\
     .short 0x4B03\n\
@@ -39,8 +78,6 @@ sub_8001040:\n\
     .short 0x0300\n\
     .short 0xFFF8\n\
     .short 0x0000\n\
-");
-__asm__("\n\
     .short 0x4802\n\
     .short 0x7C01\n\
     .short 0x2007\n\
@@ -65,13 +102,6 @@ __asm__("\n\
     .short 0x0300\n\
     .short 0x9F64\n\
     .short 0x081E\n\
-\n");
-
-__asm__("\n\
-    .align 2\n\
-    .thumb_func\n\
-    .global sub_800108C\n\
-sub_800108C:\n\
     .short 0xB510\n\
     .short 0x0600\n\
     .short 0x0E04\n\
@@ -94,9 +124,6 @@ sub_800108C:\n\
     .short 0x0300\n\
     .short 0x9F64\n\
     .short 0x081E\n\
-");
-
-__asm__("\n\
     .short 0xB5F0\n\
     .short 0x4657\n\
     .short 0x464E\n\

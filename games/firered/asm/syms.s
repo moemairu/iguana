@@ -170,3 +170,29 @@ sub_80014DC = 0x080014DC
     .global sub_8000EAC
     .thumb_func
 sub_8000EAC = 0x08000EAC
+.global sub_80011E4
+.equ sub_80011E4, 0x080011E4
+.global sub_800105C
+.equ sub_800105C, 0x0800105C
+.global gUnknown_030008E8
+.equ gUnknown_030008E8, 0x030008E8
+
+.global sub_80028EC
+.equ sub_80028EC, 0x080028EC
+.global sub_80011E4
+.equ sub_80011E4, 0x080011E4
+.global sub_800105C
+.equ sub_800105C, 0x0800105C
+.global gUnknown_030008E8
+.equ gUnknown_030008E8, 0x030008E8
+
+.global sub_8001320
+.equ sub_8001320, 0x08001320
+.global sub_80013D0
+.equ sub_80013D0, 0x080013D0
+.global sub_800139C
+.equ sub_800139C, 0x0800139C
+
+.global gUnknown_030008E0
+.equ gUnknown_030008E0, 0x030008E0
+
