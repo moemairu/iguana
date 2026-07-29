@@ -5,12 +5,15 @@ typedef unsigned int u32;
 
 struct Unk030030F0 {
     u32 unk_00;
-    u8 filler_04[28];
+    u32 unk_04;
+    u8 filler_08[24];
     u32 unk_20;
     u32 unk_24;
     u16 unk_28;
     u8 filler_2A[4];
     u16 unk_2E;
+    u8 filler_30[1032];
+    u8 unk_438;
 };
 
 extern struct Unk030030F0 gUnknown_030030F0;
@@ -245,27 +248,20 @@ sub_8000510:\n\
     .short 0x0300\n\
 ");
 
+void sub_8000544(u32 a0) {
+    gUnknown_030030F0.unk_04 = a0;
+    gUnknown_030030F0.unk_438 = 0;
+}
+
+void sub_8000558(void) {
+    *(volatile u16*)0x04000106 = 0x80;
+}
+
 __asm__("\n\
     .align 2\n\
     .thumb_func\n\
-    .global sub_8000544\n\
-sub_8000544:\n\
-    .short 0x4903\n\
-    .short 0x6048\n\
-    .short 0x2087\n\
-    .short 0x00C0\n\
-    .short 0x1809\n\
-    .short 0x2000\n\
-    .short 0x7008\n\
-    .short 0x4770\n\
-    .short 0x30F0\n\
-    .short 0x0300\n\
-    .short 0x4901\n\
-    .short 0x2080\n\
-    .short 0x8008\n\
-    .short 0x4770\n\
-    .short 0x0106\n\
-    .short 0x0400\n\
+    .global sub_8000564\n\
+sub_8000564:\n\
     .short 0xB510\n\
     .short 0x4806\n\
     .short 0x8804\n\
