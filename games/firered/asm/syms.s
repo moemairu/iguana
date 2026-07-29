@@ -148,3 +148,23 @@ gUnknown_030030E0 = 0x030030E0
 
     .global gUnknown_0300500C_ptr
 gUnknown_0300500C_ptr = 0x0300500C
+
+    .global gUnknown_030008D0
+gUnknown_030008D0 = 0x030008D0
+
+    .global gUnknown_081E9F64
+gUnknown_081E9F64 = 0x081E9F64
+
+    .global sub_800106C
+    .thumb_func
+sub_800106C = 0x0800106C
+
+    .global sub_80013F4
+    .thumb_func
+sub_80013F4 = 0x080013F4
+
+    .global sub_80014DC
+    .thumb_func
+sub_80014DC = 0x080014DC
+
+

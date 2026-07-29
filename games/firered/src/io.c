@@ -1,20 +1,30 @@
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned int u32;
+
+struct OamFlags {
+    u32 arr[4];
+    u16 field_10;
+};
+#define REG_OAM ((struct OamFlags*)0x030008D0)
+
+extern u32 gUnknown_081E9F64;
+
+extern void sub_800106C(void);
+extern void sub_80013F4(void);
+extern u8 sub_80014DC(u8);
+
+void sub_8001028(void) {
+    sub_800106C();
+    REG_OAM->field_10 = 0;
+    sub_80013F4();
+}
+
 __asm__("\n\
     .align 2\n\
     .thumb_func\n\
-    .global sub_8001028\n\
-sub_8001028:\n\
-    .short 0xB500\n\
-    .short 0xF000\n\
-    .short 0xF81F\n\
-    .short 0x4903\n\
-    .short 0x2000\n\
-    .short 0x8208\n\
-    .short 0xF000\n\
-    .short 0xF9DE\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x08D0\n\
-    .short 0x0300\n\
+    .global sub_8001040\n\
+sub_8001040:\n\
     .short 0x0600\n\
     .short 0x0E00\n\
     .short 0x4B03\n\
@@ -29,6 +39,8 @@ sub_8001028:\n\
     .short 0x0300\n\
     .short 0xFFF8\n\
     .short 0x0000\n\
+");
+__asm__("\n\
     .short 0x4802\n\
     .short 0x7C01\n\
     .short 0x2007\n\
@@ -53,6 +65,13 @@ sub_8001028:\n\
     .short 0x0300\n\
     .short 0x9F64\n\
     .short 0x081E\n\
+\n");
+
+__asm__("\n\
+    .align 2\n\
+    .thumb_func\n\
+    .global sub_800108C\n\
+sub_800108C:\n\
     .short 0xB510\n\
     .short 0x0600\n\
     .short 0x0E04\n\
@@ -75,6 +94,9 @@ sub_8001028:\n\
     .short 0x0300\n\
     .short 0x9F64\n\
     .short 0x081E\n\
+");
+
+__asm__("\n\
     .short 0xB5F0\n\
     .short 0x4657\n\
     .short 0x464E\n\

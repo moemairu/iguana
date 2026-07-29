@@ -68,6 +68,7 @@
 | `AgbMain` (`sub_80004B0`) | `0x08000400` | ✅ C matched | Entry point / main game loop |
 | `sub_80004C4` | `0x080004C4` | ✅ C matched | Init: clears struct, sets OAM flag, inits pointers |
 | `sub_8000510` | `0x08000510` | ✅ C matched | Calls `sub_80F5118`, `sub_813B870`, `sub_81E3BA8` |
+
 | `sub_8000544` | `0x08000544` | ✅ C matched | Sets `gUnk_030030F0.unk_04` and `unk_438` |
 | `sub_8000558` | `0x08000558` | ✅ C matched | Writes `0x80` to `REG_SOUNDBIAS` (0x04000106) |
 | `sub_8000564` | `0x08000564` | ⚠️ ASM wrapper | Logic clear; zero-pad alignment mismatch (`0x0000` vs `nop`) |
@@ -108,6 +109,17 @@ struct Unk030030F0 {
     u8  unk_438;         /* OAM update flag (set by sub_8000BFC) */
 };
 ```
+
+### IO & Display Regs — `src/io.c` Function Status
+
+| Function | Address | Status | Notes |
+|---|---|---|---|
+| `sub_8001028` | `0x08001028` | ✅ C matched | Clears `OamFlags.field_10`. Calls `sub_800106C` and `sub_80013F4`. |
+| `sub_8001040` | `0x08001040` | ⚠️ ASM wrapper | Mapped, logic known. Register allocation differs (`r2` vs `r3`). |
+| `sub_800105C` | `0x0800105C` | ⚠️ ASM wrapper | Mapped, logic known. Instruction order differs (`ldr` vs `movs`). |
+| `sub_800106C` | `0x0800106C` | ⚠️ ASM wrapper | Mapped, logic known. ABI quirk: `push {lr}` without `bl`. |
+| `sub_800108C` | `0x0800108C` | ⚠️ ASM wrapper | Mapped, logic known. Instruction order differs (`ldr` vs `lsls`). |
+
 
 ### External Symbols Defined in `asm/syms.s`
 
