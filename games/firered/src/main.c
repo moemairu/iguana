@@ -9,10 +9,15 @@ struct Unk030030F0 {
     u8 filler_08[24];
     u32 unk_20;
     u32 unk_24;
-    u16 unk_28;
-    u8 filler_2A[4];
-    u16 unk_2E;
-    u8 filler_30[1032];
+    u16 unk_28;  /* prev held keys */
+    u16 unk_2A;  /* newly pressed */
+    u16 unk_2C;  /* held keys */
+    u16 unk_2E;  /* new_keys2 */
+    u16 unk_30;  /* new_keys3 */
+    u16 unk_32;  /* repeat timer */
+    u16 unk_34;
+    u16 unk_36;  /* special key mask */
+    u8 filler_38[1024];
     u8 unk_438;
 };
 
