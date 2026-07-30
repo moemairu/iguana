@@ -204,3 +204,12 @@ sub_8000EAC = 0x08000EAC
 .global sub_8002948
 .equ sub_8002948, 0x08002948
 
+.global sub_800295C
+.equ sub_800295C, 0x0800295C
+.global sub_8002AE8
+.equ sub_8002AE8, 0x08002AE8
+.global sub_8002A08
+.equ sub_8002A08, 0x08002A08
+.global sub_8002B28
+.equ sub_8002B28, 0x08002B28
+

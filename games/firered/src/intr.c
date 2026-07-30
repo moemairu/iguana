@@ -9,6 +9,10 @@ typedef unsigned int u32;
 extern void *gUnknown_03000A38;
 extern void *gUnknown_03000A3C;
 extern void sub_8002948(void);
+extern int sub_800295C(void *, int);
+extern int sub_8002AE8(void *, int);
+extern void sub_8002A08(void *, int);
+extern int sub_8002B28(void *, int);
 
 // ==========================================
 // End Headers
@@ -29,46 +33,25 @@ __asm__("\n\
     .short 0x0300\n\
     .short 0x0A3C\n\
     .short 0x0300\n\
-    .short 0xB500\n\
-    .short 0x1C01\n\
-    .short 0x4802\n\
-    .short 0x6800\n\
-    .short 0xF7FF\n\
-    .short 0xFEDA\n\
-    .short 0xBC02\n\
-    .short 0x4708\n\
-    .short 0x0A38\n\
-    .short 0x0300\n\
-    .short 0xB500\n\
-    .short 0x1C01\n\
-    .short 0x4802\n\
-    .short 0x6800\n\
-    .short 0xF7FF\n\
-    .short 0xFF96\n\
-    .short 0xBC02\n\
-    .short 0x4708\n\
-    .short 0x0A38\n\
-    .short 0x0300\n\
-    .short 0xB500\n\
-    .short 0x1C01\n\
-    .short 0x4802\n\
-    .short 0x6800\n\
-    .short 0xF7FF\n\
-    .short 0xFF1C\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x0A38\n\
-    .short 0x0300\n\
-    .short 0xB500\n\
-    .short 0x1C01\n\
-    .short 0x4802\n\
-    .short 0x6800\n\
-    .short 0xF7FF\n\
-    .short 0xFFA2\n\
-    .short 0xBC02\n\
-    .short 0x4708\n\
-    .short 0x0A38\n\
-    .short 0x0300\n\
+");
+
+int sub_8002B9C(int arg0) {
+    return sub_800295C(gUnknown_03000A38, arg0);
+}
+
+int sub_8002BB0(int arg0) {
+    return sub_8002AE8(gUnknown_03000A38, arg0);
+}
+
+void sub_8002BC4(int arg0) {
+    sub_8002A08(gUnknown_03000A38, arg0);
+}
+
+int sub_8002BD8(int arg0) {
+    return sub_8002B28(gUnknown_03000A38, arg0);
+}
+__asm__("\n\
+    .align 2, 0\n\
     .short 0xB530\n\
     .short 0x4808\n\
     .short 0x6804\n\
