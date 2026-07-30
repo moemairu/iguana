@@ -1,40 +1,39 @@
+// ==========================================
+// Phase 5: Graphics Subsystem (gfx.c)
+// ==========================================
+
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned int u32;
+
+extern u8 gUnknown_02021840;
+extern u8 gUnknown_02021841;
+
+struct GfxStruct {
+    u32 field_0;
+    u32 field_4;
+    u16 field_8;
+    u16 field_A;
+};
+
+extern struct GfxStruct gUnknown_02021844[64];
+
+// ==========================================
+// End Headers
+// ==========================================
+
+void sub_8007350(void) {
+    u8 i;
+    gUnknown_02021840 = 0;
+    gUnknown_02021841 = 0;
+    for (i = 0; i < 64; i++) {
+        gUnknown_02021844[i].field_0 = 0;
+        gUnknown_02021844[i].field_4 = 0;
+        gUnknown_02021844[i].field_8 = 0;
+    }
+}
 __asm__("\n\
-    .align 2\n\
-    .thumb_func\n\
-    .global sub_8007350\n\
-sub_8007350:\n\
-    .short 0xB530\n\
-    .short 0x480C\n\
-    .short 0x2100\n\
-    .short 0x7001\n\
-    .short 0x480B\n\
-    .short 0x7001\n\
-    .short 0x2200\n\
-    .short 0x4C0B\n\
-    .short 0x2300\n\
-    .short 0x1D25\n\
-    .short 0x0050\n\
-    .short 0x1880\n\
-    .short 0x0080\n\
-    .short 0x1901\n\
-    .short 0x600B\n\
-    .short 0x1940\n\
-    .short 0x6003\n\
-    .short 0x810B\n\
-    .short 0x1C50\n\
-    .short 0x0600\n\
-    .short 0x0E02\n\
-    .short 0x2A3F\n\
-    .short 0xD9F2\n\
-    .short 0xBC30\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x1840\n\
-    .short 0x0202\n\
-    .short 0x1841\n\
-    .short 0x0202\n\
-    .short 0x1844\n\
-    .short 0x0202\n\
+    .align 2, 0\n\
     .short 0xB510\n\
     .short 0x2100\n\
     .short 0x4C08\n\
