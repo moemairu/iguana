@@ -17,70 +17,102 @@
     .short 0x0300
     .short 0x0A3C
     .short 0x0300
-    .short 0xB500
-    .short 0x1C01
-    .short 0x4802
-    .short 0x6800
-    .short 0xF7FF
-    .short 0xFEDA
-    .short 0xBC02
-    .short 0x4708
-    .short 0x0A38
-    .short 0x0300
-    .short 0xB500
-    .short 0x1C01
-    .short 0x4802
-    .short 0x6800
-    .short 0xF7FF
-    .short 0xFF96
-    .short 0xBC02
-    .short 0x4708
-    .short 0x0A38
-    .short 0x0300
-    .short 0xB500
-    .short 0x1C01
-    .short 0x4802
-    .short 0x6800
-    .short 0xF7FF
-    .short 0xFF1C
-    .short 0xBC01
-    .short 0x4700
-    .short 0x0A38
-    .short 0x0300
-    .short 0xB500
-    .short 0x1C01
-    .short 0x4802
-    .short 0x6800
-    .short 0xF7FF
-    .short 0xFFA2
-    .short 0xBC02
-    .short 0x4708
-    .short 0x0A38
-    .short 0x0300
-    .short 0xB530
-    .short 0x4808
-    .short 0x6804
-    .short 0x1C05
-    .short 0x6828
-    .short 0x1C21
-    .short 0x3110
-    .short 0xF7FF
-    .short 0xFF95
-    .short 0x2800
-    .short 0xD008
-    .short 0x68E4
-    .short 0x6828
-    .short 0x4284
-    .short 0xD1F4
-    .short 0x2001
-    .short 0xE003
-    .short 0x0000
-    .short 0x0A38
-    .short 0x0300
-    .short 0x2000
-    .short 0xBC30
-    .short 0xBC02
-    .short 0x4708
+
+	.code	16
+.text
+	.align 2, 0
+	.globl	sub_8002B9C
+	.thumb_func
+sub_8002B9C:
+	push	{lr}
+	add	r1, r0, #0
+	ldr	r0, .L3
+	ldr	r0, [r0]
+	bl	sub_800295C
+	pop	{r1}
+	bx	r1
+.L4:
+	.align 2, 0
+.L3:
+	.word	gUnknown_03000A38
+	.align 2, 0
+	.globl	sub_8002BB0
+	.thumb_func
+sub_8002BB0:
+	push	{lr}
+	add	r1, r0, #0
+	ldr	r0, .L6
+	ldr	r0, [r0]
+	bl	sub_8002AE8
+	pop	{r1}
+	bx	r1
+.L7:
+	.align 2, 0
+.L6:
+	.word	gUnknown_03000A38
+	.align 2, 0
+	.globl	sub_8002BC4
+	.thumb_func
+sub_8002BC4:
+	push	{lr}
+	add	r1, r0, #0
+	ldr	r0, .L9
+	ldr	r0, [r0]
+	bl	sub_8002A08
+	pop	{r0}
+	bx	r0
+.L10:
+	.align 2, 0
+.L9:
+	.word	gUnknown_03000A38
+	.align 2, 0
+	.globl	sub_8002BD8
+	.thumb_func
+sub_8002BD8:
+	push	{lr}
+	add	r1, r0, #0
+	ldr	r0, .L12
+	ldr	r0, [r0]
+	bl	sub_8002B28
+	pop	{r1}
+	bx	r1
+.L13:
+	.align 2, 0
+.L12:
+	.word	gUnknown_03000A38
+	.align 2, 0
+	.globl	sub_8002BEC
+	.thumb_func
+sub_8002BEC:
+	push	{r4, r5, lr}
+	ldr	r0, .L21
+	ldr	r4, [r0]
+	add	r5, r0, #0
+.L19:
+	ldr	r0, [r5]
+	add	r1, r4, #0
+	add	r1, r1, #16
+	bl	sub_8002B28
+	cmp	r0, #0
+	beq	.L18	@cond_branch
+	ldr	r4, [r4, #12]
+	ldr	r0, [r5]
+	cmp	r4, r0
+	bne	.L19	@cond_branch
+	mov	r0, #1
+	b	.L20
+.L22:
+	.align 2, 0
+.L21:
+	.word	gUnknown_03000A38
+.L18:
+	mov	r0, #0
+.L20:
+	pop	{r4, r5}
+	pop	{r1}
+	bx	r1
+	
+    .align 2, 0, 0
     .short 0x4901
     .short 0x6008
     .short 0x4770

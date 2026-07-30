@@ -6,13 +6,18 @@ typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
 
-extern void *gUnknown_03000A38;
+struct IntrNode {
+    u8 pad[12];
+    struct IntrNode *next;
+};
+
+extern struct IntrNode *gUnknown_03000A38;
 extern void *gUnknown_03000A3C;
 extern void sub_8002948(void);
-extern int sub_800295C(void *, int);
-extern int sub_8002AE8(void *, int);
-extern void sub_8002A08(void *, int);
-extern int sub_8002B28(void *, int);
+extern int sub_800295C(struct IntrNode *, int);
+extern int sub_8002AE8(struct IntrNode *, int);
+extern void sub_8002A08(struct IntrNode *, int);
+extern int sub_8002B28(struct IntrNode *, void *);
 
 // ==========================================
 // End Headers
@@ -50,32 +55,19 @@ void sub_8002BC4(int arg0) {
 int sub_8002BD8(int arg0) {
     return sub_8002B28(gUnknown_03000A38, arg0);
 }
+
+int sub_8002BEC(void) {
+    struct IntrNode *r4 = gUnknown_03000A38;
+    do {
+        if (sub_8002B28(gUnknown_03000A38, (char *)r4 + 16) == 0) {
+            return 0;
+        }
+        r4 = r4->next;
+    } while (r4 != gUnknown_03000A38);
+    return 1;
+}
 __asm__("\n\
     .align 2, 0\n\
-    .short 0xB530\n\
-    .short 0x4808\n\
-    .short 0x6804\n\
-    .short 0x1C05\n\
-    .short 0x6828\n\
-    .short 0x1C21\n\
-    .short 0x3110\n\
-    .short 0xF7FF\n\
-    .short 0xFF95\n\
-    .short 0x2800\n\
-    .short 0xD008\n\
-    .short 0x68E4\n\
-    .short 0x6828\n\
-    .short 0x4284\n\
-    .short 0xD1F4\n\
-    .short 0x2001\n\
-    .short 0xE003\n\
-    .short 0x0000\n\
-    .short 0x0A38\n\
-    .short 0x0300\n\
-    .short 0x2000\n\
-    .short 0xBC30\n\
-    .short 0xBC02\n\
-    .short 0x4708\n\
     .short 0x4901\n\
     .short 0x6008\n\
     .short 0x4770\n\
