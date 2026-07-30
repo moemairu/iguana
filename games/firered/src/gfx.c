@@ -4,6 +4,7 @@
 
 typedef unsigned char u8;
 typedef unsigned short u16;
+typedef short s16;
 typedef unsigned int u32;
 
 extern u8 gUnknown_02021840;
@@ -17,6 +18,15 @@ struct GfxStruct {
 };
 
 extern struct GfxStruct gUnknown_02021844[64];
+
+struct OamMatrix {
+    s16 pa;
+    s16 pb;
+    s16 pc;
+    s16 pd;
+};
+
+extern struct OamMatrix gUnknown_02021BCC[32];
 
 // ==========================================
 // End Headers
@@ -32,30 +42,18 @@ void sub_8007350(void) {
         gUnknown_02021844[i].field_8 = 0;
     }
 }
+
+void sub_8007390(void) {
+    u8 i;
+    for (i = 0; i < 32; i++) {
+        gUnknown_02021BCC[i].pa = 256;
+        gUnknown_02021BCC[i].pb = 0;
+        gUnknown_02021BCC[i].pc = 0;
+        gUnknown_02021BCC[i].pd = 256;
+    }
+}
 __asm__("\n\
     .align 2, 0\n\
-    .short 0xB510\n\
-    .short 0x2100\n\
-    .short 0x4C08\n\
-    .short 0x2300\n\
-    .short 0x2280\n\
-    .short 0x0052\n\
-    .short 0x00C8\n\
-    .short 0x1900\n\
-    .short 0x8002\n\
-    .short 0x8043\n\
-    .short 0x8083\n\
-    .short 0x80C2\n\
-    .short 0x1C48\n\
-    .short 0x0600\n\
-    .short 0x0E01\n\
-    .short 0x291F\n\
-    .short 0xD9F4\n\
-    .short 0xBC10\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x1BCC\n\
-    .short 0x0202\n\
     .short 0xB530\n\
     .short 0x9D03\n\
     .short 0x0600\n\

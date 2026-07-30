@@ -39,30 +39,37 @@ sub_8007350:
 	.word	gUnknown_02021840
 	.word	gUnknown_02021841
 	.word	gUnknown_02021844
+	.align 2, 0
+	.globl	sub_8007390
+	.thumb_func
+sub_8007390:
+	push	{r4, lr}
+	mov	r1, #0
+	ldr	r4, .L16
+	mov	r3, #0
+	mov	r2, #128
+	lsl	r2, r2, #1
+.L14:
+	lsl	r0, r1, #3
+	add	r0, r0, r4
+	strh	r2, [r0]
+	strh	r3, [r0, #2]
+	strh	r3, [r0, #4]
+	strh	r2, [r0, #6]
+	add	r0, r1, #1
+	lsl	r0, r0, #24
+	lsr	r1, r0, #24
+	cmp	r1, #31
+	bls	.L14	@cond_branch
+	pop	{r4}
+	pop	{r0}
+	bx	r0
+.L17:
+	.align 2, 0
+.L16:
+	.word	gUnknown_02021BCC
 	
     .align 2, 0, 0
-    .short 0xB510
-    .short 0x2100
-    .short 0x4C08
-    .short 0x2300
-    .short 0x2280
-    .short 0x0052
-    .short 0x00C8
-    .short 0x1900
-    .short 0x8002
-    .short 0x8043
-    .short 0x8083
-    .short 0x80C2
-    .short 0x1C48
-    .short 0x0600
-    .short 0x0E01
-    .short 0x291F
-    .short 0xD9F4
-    .short 0xBC10
-    .short 0xBC01
-    .short 0x4700
-    .short 0x1BCC
-    .short 0x0202
     .short 0xB530
     .short 0x9D03
     .short 0x0600

@@ -197,3 +197,4 @@ struct Unk030030F0 {
 | 2026-07-29 | 3.5 | Solved GCC padding mismatch (46c0 vs 0000) using Makefile sed post-processor. Restored sub_80019BC and 19D0 to pure C. make compare passes. |
 | 2026-07-29 | 4.0 | Created regenerate_intr.py. Extracted intr.c (0x2B80 - 0x7350) and integrated into build pipeline. Hit literal pool swap on sub_8002B80 so it remains an asm wrapper. Decompiled sub_8002B9C, BB0, BC4, BD8, and BEC into pure C successfully. Identified IntrNode linked list. |
 | 2026-07-30 | 5.0 | Created regenerate_gfx.py. Extracted gfx.c (0x7350 - 0xB178, ~16 KB). Decompiled sub_8007350 into pure C, discovering GfxStruct array at 0x02021844. |
+| 2026-07-30 | 5.1 | Decompiled sub_8007390, uncovering the OAM affine matrix initialization in gfx.c. |

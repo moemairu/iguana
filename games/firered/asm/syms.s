@@ -220,3 +220,6 @@ sub_8000EAC = 0x08000EAC
 .global gUnknown_02021844
 .equ gUnknown_02021844, 0x02021844
 
+.global gUnknown_02021BCC
+.equ gUnknown_02021BCC, 0x02021BCC
+
