@@ -26,8 +26,15 @@ struct OamMatrix {
     s16 pd;
 };
 
+struct SpriteStruct {
+    u8 pad[40];
+    u8 width;
+    u8 height;
+};
+
 extern struct OamMatrix gUnknown_02021BCC[32];
 extern const u8 gUnknown_08231CA0[];
+extern const u8 gUnknown_08231C85[];
 extern void sub_81E5E78(void *, const void *, int);
 
 // ==========================================
@@ -65,42 +72,26 @@ void sub_80073BC(u8 index, s16 pa, s16 pb, s16 pc, s16 pd) {
 void sub_80073DC(void *dest) {
     sub_81E5E78(dest, gUnknown_08231CA0, 68);
 }
+
+void sub_80073F0(struct SpriteStruct *sprite, u8 shape, u8 size, u8 affine_mode) {
+    u32 offset;
+    u8 w, h;
+    const u8 *ptr = gUnknown_08231C85;
+    
+    offset = size * 2 + shape * 8;
+    w = ptr[offset];
+    ptr++;
+    h = ptr[offset];
+    
+    if (affine_mode & 2) {
+        w *= 2;
+        h *= 2;
+    }
+    sprite->width = w;
+    sprite->height = h;
+}
 __asm__("\n\
     .align 2, 0\n\
-    .short 0xB570\n\
-    .short 0x1C06\n\
-    .short 0x0609\n\
-    .short 0x0612\n\
-    .short 0x061B\n\
-    .short 0x0E1B\n\
-    .short 0x4C0C\n\
-    .short 0x0DD2\n\
-    .short 0x0D49\n\
-    .short 0x1852\n\
-    .short 0x1910\n\
-    .short 0x7805\n\
-    .short 0x3401\n\
-    .short 0x1912\n\
-    .short 0x7811\n\
-    .short 0x2002\n\
-    .short 0x4003\n\
-    .short 0x2B00\n\
-    .short 0xD003\n\
-    .short 0x0668\n\
-    .short 0x0E05\n\
-    .short 0x0648\n\
-    .short 0x0E01\n\
-    .short 0x1C30\n\
-    .short 0x3028\n\
-    .short 0x7005\n\
-    .short 0x3001\n\
-    .short 0x7001\n\
-    .short 0xBC70\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x0000\n\
-    .short 0x1C85\n\
-    .short 0x0823\n\
     .short 0xB5F0\n\
     .short 0x464F\n\
     .short 0x4646\n\
