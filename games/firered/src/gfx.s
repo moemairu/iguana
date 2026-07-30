@@ -68,34 +68,43 @@ sub_8007390:
 	.align 2, 0
 .L16:
 	.word	gUnknown_02021BCC
+	.align 2, 0
+	.globl	sub_80073BC
+	.thumb_func
+sub_80073BC:
+	push	{r4, r5, lr}
+	ldr	r5, [sp, #12]
+	lsl	r0, r0, #24
+	ldr	r4, .L19
+	lsr	r0, r0, #21
+	add	r0, r0, r4
+	strh	r1, [r0]
+	strh	r2, [r0, #2]
+	strh	r3, [r0, #4]
+	strh	r5, [r0, #6]
+	pop	{r4, r5}
+	pop	{r0}
+	bx	r0
+.L20:
+	.align 2, 0
+.L19:
+	.word	gUnknown_02021BCC
+	.align 2, 0
+	.globl	sub_80073DC
+	.thumb_func
+sub_80073DC:
+	push	{lr}
+	ldr	r1, .L22
+	mov	r2, #68
+	bl	sub_81E5E78
+	pop	{r0}
+	bx	r0
+.L23:
+	.align 2, 0
+.L22:
+	.word	gUnknown_08231CA0
 	
     .align 2, 0, 0
-    .short 0xB530
-    .short 0x9D03
-    .short 0x0600
-    .short 0x4C05
-    .short 0x0D40
-    .short 0x1900
-    .short 0x8001
-    .short 0x8042
-    .short 0x8083
-    .short 0x80C5
-    .short 0xBC30
-    .short 0xBC01
-    .short 0x4700
-    .short 0x0000
-    .short 0x1BCC
-    .short 0x0202
-    .short 0xB500
-    .short 0x4903
-    .short 0x2244
-    .short 0xF1DE
-    .short 0xFD49
-    .short 0xBC01
-    .short 0x4700
-    .short 0x0000
-    .short 0x1CA0
-    .short 0x0823
     .short 0xB570
     .short 0x1C06
     .short 0x0609

@@ -27,6 +27,8 @@ struct OamMatrix {
 };
 
 extern struct OamMatrix gUnknown_02021BCC[32];
+extern const u8 gUnknown_08231CA0[];
+extern void sub_81E5E78(void *, const void *, int);
 
 // ==========================================
 // End Headers
@@ -52,34 +54,19 @@ void sub_8007390(void) {
         gUnknown_02021BCC[i].pd = 256;
     }
 }
+
+void sub_80073BC(u8 index, s16 pa, s16 pb, s16 pc, s16 pd) {
+    gUnknown_02021BCC[index].pa = pa;
+    gUnknown_02021BCC[index].pb = pb;
+    gUnknown_02021BCC[index].pc = pc;
+    gUnknown_02021BCC[index].pd = pd;
+}
+
+void sub_80073DC(void *dest) {
+    sub_81E5E78(dest, gUnknown_08231CA0, 68);
+}
 __asm__("\n\
     .align 2, 0\n\
-    .short 0xB530\n\
-    .short 0x9D03\n\
-    .short 0x0600\n\
-    .short 0x4C05\n\
-    .short 0x0D40\n\
-    .short 0x1900\n\
-    .short 0x8001\n\
-    .short 0x8042\n\
-    .short 0x8083\n\
-    .short 0x80C5\n\
-    .short 0xBC30\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x0000\n\
-    .short 0x1BCC\n\
-    .short 0x0202\n\
-    .short 0xB500\n\
-    .short 0x4903\n\
-    .short 0x2244\n\
-    .short 0xF1DE\n\
-    .short 0xFD49\n\
-    .short 0xBC01\n\
-    .short 0x4700\n\
-    .short 0x0000\n\
-    .short 0x1CA0\n\
-    .short 0x0823\n\
     .short 0xB570\n\
     .short 0x1C06\n\
     .short 0x0609\n\
